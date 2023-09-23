@@ -16,13 +16,13 @@ class SplitWavAudioMubin:
         return self.audio.duration_seconds
 
     def save_split(self, from_min, to_min, split_filename):
-        t1 = from_min * 60 * 1000
-        t2 = to_min * 60 * 1000
+        t1 = from_min * 1000
+        t2 = to_min * 1000
         split_audio = self.audio[t1:t2]
         split_audio.export(os.path.join(self.export_path, split_filename), format="wav")
 
     def multiple_split(self, min_per_split):
-        total_mins = math.ceil(self.get_duration() / 60)
+        total_mins = math.ceil(self.get_duration())
         for i in range(0, total_mins, min_per_split):
             split_fn = self.export_name + "_" + str(i) + ".wav"
             self.save_split(i, i + min_per_split, split_fn)
@@ -36,7 +36,7 @@ def main():
     export_path = "data/audio/split"
     export_name = "macron_split"
     split_wav = SplitWavAudioMubin(filepath, export_path, export_name)
-    split_wav.multiple_split(min_per_split=1)
+    split_wav.multiple_split(min_per_split=5)
 
 
 if __name__ == "__main__":
