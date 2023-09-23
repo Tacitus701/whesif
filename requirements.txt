@@ -1,6 +1,10 @@
-torch
-torchaudio
-transformers
-librosa
+torch~=2.0.1
+torchaudio~=2.0.2
+transformers~=4.33.2
+librosa~=0.10.0.post2
 ipython
-pydub
+pydub~=0.25.1
+TTS~=0.17.4
+soundfile~=0.12.1
+trainer~=0.0.31
+noisereduce
