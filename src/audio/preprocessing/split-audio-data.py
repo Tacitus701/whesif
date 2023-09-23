@@ -10,7 +10,7 @@ class SplitWavAudioMubin:
         self.export_path = export_path
         self.export_name = export_name
 
-        self.audio = AudioSegment.from_wav(self.filepath).set_channels(1)
+        self.audio = AudioSegment.from_wav(self.filepath).set_channels(1).set_frame_rate(22050)
 
     def get_duration(self):
         return self.audio.duration_seconds
