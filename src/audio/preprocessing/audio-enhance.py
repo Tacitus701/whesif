@@ -32,7 +32,7 @@ class ReduceNoise:
 
 
 def main():
-    for i in range(0, 105, 5):
+    for i in range(0, 205, 5):
         rn = ReduceNoise(input_audio_path=f'./wavs/macron_split_{i}.wav', output_audio_path=f'./wavs/macron_split_{i}.wav')
         rn.reduce_noise()
         rn.save_as_wav()
