@@ -5,7 +5,7 @@ import os
 from trainer import Trainer, TrainerArgs
 
 # VitsConfig: all model related values for training, validating and testing.
-from TTS.tts.configs.vits_configs import VitsConfig
+from TTS.tts.configs.vits_config import VitsConfig
 
 # BaseDatasetConfig: defines name, formatter and path of the dataset.
 from TTS.tts.configs.shared_configs import BaseDatasetConfig
@@ -21,23 +21,20 @@ output_path = os.path.dirname(os.path.abspath(__file__))
 # Set LJSpeech as our target dataset and define its path.
 # You can also use a simple Dict to define the dataset and pass it to your custom formatter.
 dataset_config = BaseDatasetConfig(
-    formatter="thorsten", meta_file_train="metadata.txt", path=os.path.join(output_path, "../wavs/")
+    formatter="thorsten", meta_file_train="metadata.txt", path="./"
 )
 
 # INITIALIZE THE TRAINING CONFIGURATION
 # Configure the model. Every config class inherits the BaseTTSConfig.
-config = GlowTTSConfig(
+config = VitsConfig(
     batch_size=2,
     eval_batch_size=2,
-    num_loader_workers=2,
-    num_eval_loader_workers=2,
+    num_loader_workers=1,
+    num_eval_loader_workers=1,
     run_eval=True,
     test_delay_epochs=-1,
     epochs=1,
-    text_cleaner="phoneme_cleaners",
-    use_phonemes=True,
-    phoneme_language="fr-fr",
-    phoneme_cache_path=os.path.join(output_path, "phoneme_cache"),
+    use_phonemes=False,
     print_step=1,
     print_eval=False,
     mixed_precision=True,
