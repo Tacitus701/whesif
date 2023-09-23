@@ -40,6 +40,7 @@ config = VitsConfig(
     mixed_precision=True,
     output_path=output_path,
     datasets=[dataset_config],
+    eval_split_size=0.5,
 )
 
 # INITIALIZE THE AUDIO PROCESSOR
