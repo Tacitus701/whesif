@@ -4,11 +4,11 @@ import os
 # TrainingArgs: Defines the set of arguments of the Trainer.
 from trainer import Trainer, TrainerArgs
 
-# VitsConfig: all model related values for training, validating and testing.
-from TTS.tts.configs.vits_config import VitsConfig
-
 # BaseDatasetConfig: defines name, formatter and path of the dataset.
 from TTS.tts.configs.shared_configs import BaseDatasetConfig
+
+# VitsConfig: all model related values for training, validating and testing.
+from TTS.tts.configs.vits_config import VitsConfig
 from TTS.tts.datasets import load_tts_samples
 from TTS.tts.models.vits import Vits
 from TTS.tts.utils.text.tokenizer import TTSTokenizer
@@ -20,9 +20,7 @@ output_path = os.path.dirname(os.path.abspath(__file__))
 # DEFINE DATASET CONFIG
 # Set LJSpeech as our target dataset and define its path.
 # You can also use a simple Dict to define the dataset and pass it to your custom formatter.
-dataset_config = BaseDatasetConfig(
-    formatter="thorsten", meta_file_train="metadata.txt", path="./"
-)
+dataset_config = BaseDatasetConfig(formatter="thorsten", meta_file_train="metadata.txt", path="./")
 
 # INITIALIZE THE TRAINING CONFIGURATION
 # Configure the model. Every config class inherits the BaseTTSConfig.
